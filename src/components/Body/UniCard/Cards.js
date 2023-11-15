@@ -8,7 +8,7 @@ const Cards = ({ universities }) => {
   const [currentUniversities, setUniversities] = useState(universities);
   const [filteredUniversities, setFilteredUniversities] =
     useState(universities);
-  const universitiesPerPage = 1;
+  const universitiesPerPage = 10;
   const [totalPages, setTotalPages] = useState(
     Math.ceil(universities.length / universitiesPerPage)
   );
