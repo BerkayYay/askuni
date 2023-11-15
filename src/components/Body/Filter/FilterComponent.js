@@ -73,9 +73,8 @@ const FilterComponent = () => {
 
   return (
     <div
-      className="p-6  bg-white rounded-xl border-gray-300 border mb-11
-      md:mb-0 md:mr-6 w-full md:w-full lg:w-2/3 2xl:w-2/5  
-    "
+      className="p-6 bg-white rounded-xl border-gray-300 border mb-11
+      md:mb-0  w-full md:w-full lg:w-5/6 "
     >
       {options.map((option, index) => (
         <div className="mb-4" key={index}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const Button = ({ children, onClick, className }) => {
+const Button = ({ children, onClick, className, disabled }) => {
   return (
     <button
       className={twMerge(
@@ -9,6 +9,7 @@ const Button = ({ children, onClick, className }) => {
         className
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

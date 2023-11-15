@@ -1,6 +1,7 @@
 import React from "react";
 import Cards from "./UniCard/Cards";
 import Filters from "./Filter/Filters";
+import dummyData from "../../constants/dummyData.json";
 
 const Body = () => {
   return (
@@ -11,9 +12,9 @@ const Body = () => {
       >
         Find Your Dream Programs
       </text>
-      <div className="flex justify-evenly items-center mt-10 w-full">
+      <div className="flex justify-center items-start mt-10 w-2/3 ">
         <Filters />
-        <Cards />
+        <Cards universities={dummyData} />
       </div>
     </div>
   );
