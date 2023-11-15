@@ -37,7 +37,6 @@ const Cards = ({ universities }) => {
     );
     value === "" &&
       setTotalPages(Math.ceil(universities.length / universitiesPerPage));
-    console.log("222");
   };
 
   useEffect(() => {
@@ -46,8 +45,6 @@ const Cards = ({ universities }) => {
     setUniversities(
       filteredUniversities.slice(indexOfFirstUniversity, indexOfLastUniversity)
     );
-
-    console.log("111");
   }, [currentPage]);
 
   return (
