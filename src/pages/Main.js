@@ -4,7 +4,7 @@ import Body from "../components/Body/Body";
 
 const Main = () => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 h-screen">
       <Header />
       <Body />
     </div>

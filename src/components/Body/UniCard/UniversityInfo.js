@@ -41,10 +41,12 @@ const UniversityInfo = ({
 
   return (
     <div className="w-1/2 p-4">
-      <div className="text-lg font-sans mb-2">{universityName} (GOLD)</div>
+      <div className="text-lg font-sans mb-2 text-gray-600">
+        {universityName} (GOLD)
+      </div>
       <div className="text-gray-500 mb-4">{universityType} University</div>
       <div className="font-sans text-base mb-2">{department}</div>
-      <div className="mt-2 flex flex-wrap text-15px">
+      <div className="mt-2 flex flex-wrap text-15px justify-start items-center">
         {roundedObjects.map((object, index) => (
           <RoundedText
             key={index}

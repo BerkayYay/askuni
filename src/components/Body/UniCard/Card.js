@@ -6,7 +6,6 @@ import Divider from "../../Divider";
 const Card = ({ university }) => {
   return (
     <div className="w-full h-220 bg-white border rounded-xl overflow-hidden shadow-md mb-4">
-      {university.index}
       <div className="flex">
         <div className="flex justify-center items-center ml-4">
           <img
