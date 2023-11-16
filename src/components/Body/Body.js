@@ -19,7 +19,7 @@ const Body = () => {
       </div>
       <div className="flex justify-center items-start mt-10 w-2/3 ">
         <Filters />
-        <Cards universities={dummyData} />
+        <Cards />
       </div>
     </div>
   );
