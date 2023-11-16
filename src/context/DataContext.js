@@ -10,102 +10,118 @@ const DataContextProvider = (props) => {
   const [totalPages, setTotalPages] = useState(
     Math.ceil(universities.length / universitiesPerPage)
   );
-
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedUniversityType, setSelectedUniversityType] = useState("");
-  const [selectedGradeType, setSelectedGradeType] = useState("");
-  const [selectedEducationType, setSelectedEducationType] = useState("");
-  const [selectedCampusType, setSelectedCampusType] = useState("");
-  const [selectedEducationLanguage, setSelectedEducationLanguage] =
-    useState("");
-
   const [filteredUniversities, setFilteredUniversities] =
     useState(universityData);
+
+  const [selectedFilters, setSelectedFilters] = useState({
+    country: [],
+    universityType: [],
+    gradeType: [],
+    educationType: [],
+    campusType: [],
+    educationLanguage: [],
+  });
+
   const [filterOptions, setFilterOptions] = useState([
     {
+      id: "country",
       label: "Country",
       options: ["Turkey", "Ukraine", "India"],
-      selectedTexts: selectedCountry,
-      onSelectedOption: setSelectedCountry,
+      selectedText: selectedFilters.country,
+      onSelectedOption: (option) => handleSelectedOption("country", option),
       placeholder: "Select Country",
     },
     {
+      id: "universityType",
       label: "University Type",
       options: ["Private", "State"],
-      selectedText: selectedUniversityType,
-      onSelectedOption: (option) => {
-        setSelectedUniversityType(option);
-      },
+      selectedText: selectedFilters.universityType,
+      onSelectedOption: (option) =>
+        handleSelectedOption("universityType", option),
       placeholder: "Select University Type",
     },
     {
+      id: "gradeType",
       label: "Grade Type",
       options: ["Associate", "Bachelors", "Masters", "PhD", "Other"],
-      selectedText: selectedGradeType,
-      onSelectedOption: setSelectedGradeType,
+      selectedText: selectedFilters.gradeType,
+      onSelectedOption: (option) => handleSelectedOption("gradeType", option),
       placeholder: "Select Grade Type",
     },
     {
+      id: "educationType",
       label: "Education Type",
       options: ["Full time", "Evening period", "Online"],
-      selectedText: selectedEducationType,
-      onSelectedOption: setSelectedEducationType,
+      selectedText: selectedFilters.educationType,
+      onSelectedOption: (option) =>
+        handleSelectedOption("educationType", option),
       placeholder: "Select Education Type",
     },
     {
+      id: "campusType",
       label: "Campus Type",
       options: ["On Campus", "Off Campus"],
-      selectedText: selectedCampusType,
-      onSelectedOption: setSelectedCampusType,
+      selectedText: selectedFilters.campusType,
+      onSelectedOption: (option) => handleSelectedOption("campusType", option),
       placeholder: "Select Campus Type",
     },
     {
+      id: "educationLanguage",
       label: "Education Language",
       options: ["English", "Russian", "Turkish"],
-      selectedText: selectedEducationLanguage,
-      onSelectedOption: setSelectedEducationLanguage,
+      selectedText: selectedFilters.educationLanguage,
+      onSelectedOption: (option) =>
+        handleSelectedOption("educationLanguage", option),
       placeholder: "Select Education Language",
     },
   ]);
 
-  useEffect(() => {
-    console.log(filterOptions.map((option) => option.selectedText));
-  }, [filterOptions]);
-
   const clearFilters = () => {
-    setSelectedCountry("");
-    setSelectedUniversityType("");
-    setSelectedGradeType("");
-    setSelectedEducationType("");
-    setSelectedCampusType("");
-    setSelectedEducationLanguage("");
+    setSelectedFilters({
+      country: [],
+      universityType: [],
+      gradeType: [],
+      educationType: [],
+      campusType: [],
+      educationLanguage: [],
+    });
   };
+
+  const handleSelectedOption = (filterType, option) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: prevFilters[filterType].includes(option)
+        ? prevFilters[filterType].filter((item) => item !== option)
+        : [...prevFilters[filterType], option],
+    }));
+  };
+
+  useEffect(() => {
+    console.log(selectedFilters.country);
+  }, [selectedFilters]);
 
   useEffect(() => {
     const filtered = universities.filter((university) => {
       return (
-        (selectedCountry === "" || university.country === selectedCountry) &&
-        (selectedUniversityType === "" ||
-          university.universityType === selectedUniversityType) &&
-        (selectedGradeType === "" ||
-          university.gradeType === selectedGradeType) &&
-        (selectedEducationType === "" ||
-          university.educationType === selectedEducationType) &&
-        (selectedCampusType === "" ||
-          university.campusType === selectedCampusType) &&
-        (selectedEducationLanguage === "" ||
-          university.educationLanguage === selectedEducationLanguage)
+        (selectedFilters.country.length === 0 ||
+          selectedFilters.country.includes(university.country)) &&
+        (selectedFilters.universityType.length === 0 ||
+          selectedFilters.universityType.includes(university.universityType)) &&
+        (selectedFilters.gradeType.length === 0 ||
+          selectedFilters.gradeType.includes(university.gradeType)) &&
+        (selectedFilters.educationType.length === 0 ||
+          selectedFilters.educationType.includes(university.educationType)) &&
+        (selectedFilters.campusType.length === 0 ||
+          selectedFilters.campusType.includes(university.campusType)) &&
+        (selectedFilters.educationLanguage.length === 0 ||
+          selectedFilters.educationLanguage.includes(
+            university.educationLanguage
+          ))
       );
     });
     setFilteredUniversities(filtered);
-  }, [
-    selectedCountry,
-    selectedUniversityType,
-    selectedGradeType,
-    selectedEducationType,
-    selectedCampusType,
-    selectedEducationLanguage,
-  ]);
+    setCurrentPage(1);
+  }, [selectedFilters]);
 
   return (
     <DataContext.Provider
@@ -124,6 +140,7 @@ const DataContextProvider = (props) => {
         filterOptions,
         setFilterOptions,
         clearFilters,
+        selectedFilters,
       }}
     >
       {props.children}

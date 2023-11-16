@@ -2,15 +2,14 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import { HiOutlineChevronUp, HiOutlineChevronDown } from "react-icons/hi";
 import { DataContext } from "../../../context/DataContext";
 
-const Select = ({ options, onSelectedOption, selectedText }) => {
+const Select = ({ options, onSelectedOption, selectedText, id }) => {
+  const { selectedFilters } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
 
   const selectRef = useRef(null);
 
   const handleSelectedOption = (option) => {
     onSelectedOption(option);
-    setSelectedOption(option);
     setIsOpen(false);
   };
 
@@ -38,7 +37,11 @@ const Select = ({ options, onSelectedOption, selectedText }) => {
         className="flex justify-between items-center border border-gray-300 p-2 rounded-md cursor-pointer"
         onClick={toggleDropdown}
       >
-        <span className="mr-2">{selectedOption || selectedText}</span>
+        <span className="mr-2">
+          {selectedFilters[id].length > 0
+            ? selectedFilters[id].join(", ")
+            : selectedText}
+        </span>
         {isOpen ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
       </div>
       {isOpen && (

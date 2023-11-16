@@ -15,9 +15,12 @@ const FilterComponent = () => {
         <div className="mb-4" key={index}>
           <label className="block text-sm font-bold mb-2">{option.label}</label>
           <Select
-            selectedText={option.selectedText || option.placeholder}
+            id={option.id}
+            selectedText={option.placeholder}
             options={option.options}
             onSelectedOption={option.onSelectedOption}
+            setFunction={option.setFunction}
+            index={index}
           />
         </div>
       ))}
