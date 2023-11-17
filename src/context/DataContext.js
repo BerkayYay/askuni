@@ -133,7 +133,6 @@ const DataContextProvider = (props) => {
         setUniversitiesPerPage,
         totalPages,
         setTotalPages,
-        filterOptions,
         setFilterOptions,
         clearFilters,
         selectedFilters,

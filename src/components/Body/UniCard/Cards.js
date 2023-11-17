@@ -40,7 +40,7 @@ const Cards = () => {
   }, [currentPage, filteredUniversities]);
 
   return (
-    <div className="flex justify-center items-start flex-col w-4/5">
+    <div className="flex justify-center items-start flex-col w-full xl:w-4/5">
       <SearchInput placeholder={"Search for programs"} />
       {currentUniversities.map((university, index) => (
         <Card key={index} university={university} />

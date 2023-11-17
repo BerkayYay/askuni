@@ -3,8 +3,10 @@ import FilterComponent from "./FilterComponent";
 
 const Filters = () => {
   return (
-    <div className="flex flex-col justify-center items-start w-1/3">
-      <FilterComponent />
+    <div className="hidden xl:flex flex-col justify-center items-start xl:w-1/3 ">
+      <div className="hidden xl:block">
+        <FilterComponent />
+      </div>
     </div>
   );
 };
