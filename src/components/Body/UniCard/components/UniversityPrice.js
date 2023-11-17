@@ -1,6 +1,6 @@
 import React from "react";
 import RoundedText from "./RoundedText";
-import { ReactComponent as DollarIcon } from "../../../assets/dollarIcon.svg";
+import { ReactComponent as DollarIcon } from "../../../../assets/dollarIcon.svg";
 
 const UniversityPrice = ({ price, term, deadline, season, startDate }) => {
   return (

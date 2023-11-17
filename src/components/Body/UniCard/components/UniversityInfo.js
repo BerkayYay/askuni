@@ -1,9 +1,9 @@
 import React from "react";
 import RoundedText from "./RoundedText";
-import { ReactComponent as LanguageIcon } from "../../../assets/languageIcon.svg";
-import { ReactComponent as GradeTypeIcon } from "../../../assets/gradeTypeIcon.svg";
-import { ReactComponent as EducationTimeIcon } from "../../../assets/educationTimeIcon.svg";
-import { ReactComponent as YearsIcon } from "../../../assets/yearsIcon.svg";
+import { ReactComponent as LanguageIcon } from "../../../../assets/languageIcon.svg";
+import { ReactComponent as GradeTypeIcon } from "../../../../assets/gradeTypeIcon.svg";
+import { ReactComponent as EducationTimeIcon } from "../../../../assets/educationTimeIcon.svg";
+import { ReactComponent as YearsIcon } from "../../../../assets/yearsIcon.svg";
 
 const UniversityInfo = ({
   universityName,

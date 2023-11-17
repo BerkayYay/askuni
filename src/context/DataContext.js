@@ -97,10 +97,6 @@ const DataContextProvider = (props) => {
   };
 
   useEffect(() => {
-    console.log(selectedFilters.country);
-  }, [selectedFilters]);
-
-  useEffect(() => {
     const filtered = universities.filter((university) => {
       return (
         (selectedFilters.country.length === 0 ||

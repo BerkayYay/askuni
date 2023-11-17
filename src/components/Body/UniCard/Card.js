@@ -1,6 +1,6 @@
 import React from "react";
-import UniversityInfo from "./UniversityInfo";
-import UniversityPrice from "./UniversityPrice";
+import UniversityInfo from "./components/UniversityInfo";
+import UniversityPrice from "./components/UniversityPrice";
 import Divider from "../../Divider";
 
 const Card = ({ university }) => {
